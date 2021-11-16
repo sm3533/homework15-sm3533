@@ -89,6 +89,47 @@ public class BinaryNode<E> {
         return false;
     }
 
+    public int height(BinaryNode<E> node){
+        int left=1;
+        int right=1;
+
+        if(node.getLeft() != null){
+            left=left+height(node.getLeft());
+        }
+        if(node.getRight() != null){
+            right=right+height(node.getRight());
+        }
+        return Math.max(left,right);
+    }
+
+    public int countnode(BinaryNode<E> node){
+        if(node==null)
+            return 0;
+
+        return 1+countnode(node.getLeft())+countnode(node.getRight());
+    }
+    public boolean isPerfect(BinaryNode<E> node){
+        int count=countnode(node);
+        int max= height(node)-1;
+        int perfect_Formula = (int) (Math.pow(2, max+1)-1);
+        return perfect_Formula==count;
+
+    }
+    public int leaves(BinaryNode<E> node){
+        int count=0;
+        if(node==null){
+            return count+1;
+        }
+        return leaves(node.getLeft())+leaves(node.getRight());
+    }
+    @Override
+    public boolean equals(Object node){
+        StringifyVisitor str = new StringifyVisitor();
+        this.infixTraversal(str,this);
+
+        }
+        return flag;
+    }
     public static void main(String[] args) {
 
         BinaryNode<Integer> b1 = new BinaryNode<>(2,
@@ -122,5 +163,8 @@ public class BinaryNode<E> {
         System.out.println("Sorted Binary Tree created "+ str2);
 
         System.out.println(b2.binarysearch(134));
+
+        int count=b2.height(b2)-1;
+        System.out.println(count);
     }
 }
