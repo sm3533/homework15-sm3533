@@ -11,5 +11,14 @@ public class BinaryNodeHeight<E> {
         int count=b3.height(b3)-1;
         System.out.println("The height of the binary tree is "+count);
         //System.out.println(Math.pow(2,3+1)-1);
+        BinaryNode<Integer> b6 = new BinaryNode<>(39,null,null);
+        b6.binaryInsert(25,b6);
+        b6.binaryInsert(136,b6);
+        b6.binaryInsert(8,b6);
+        b6.binaryInsert(26,b6);
+
+        count=b6.height(b6)-1;
+
+        System.out.println("The height of the binary tree is "+count);
     }
 }
